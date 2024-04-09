@@ -30,11 +30,10 @@ export class HeroesService {
 		return this.http.patch<Hero>(`${this.baseUrl}/heroes/${hero.id}`, hero);
 	}
 
-	deleteHeroById(hero: Hero): Observable<boolean> {
-		if (!hero.id) throw Error('Hero id is requerid');
-		return this.http.delete(`${this.baseUrl}/heroes/${hero.id}`).pipe(
-			catchError((err) => of(false)),
-			map((resp) => true)
+	deleteHeroById(id: string): Observable<boolean> {
+		return this.http.delete(`${this.baseUrl}/heroes/${id}`).pipe(
+			map((resp) => true),
+			catchError((err) => of(false))
 		);
 	}
 }

@@ -16,39 +16,6 @@
       "characters": "Bruce Wayne"
     },
     {
-      "id": "dc-superman",
-      "superhero": "Superman",
-      "publisher": "DC Comics",
-      "alter_ego": "Kal-El",
-      "first_appearance": "Action Comics #1",
-      "characters": "Kal-El",
-      "alt_img": "https://content.eccediciones.com/productos/10036/Superman_109_30_1a_cubierta_CORR.jpg"
-    },
-    {
-      "id": "dc-flash",
-      "superhero": "Flash",
-      "publisher": "DC Comics",
-      "alter_ego": "Jay Garrick",
-      "first_appearance": "Flash Comics #1",
-      "characters": "Jay Garrick, Barry Allen, Wally West, Bart Allen"
-    },
-    {
-      "id": "dc-green",
-      "superhero": "Green Lantern",
-      "publisher": "DC Comics",
-      "alter_ego": "Alan Scott",
-      "first_appearance": "All-American Comics #16",
-      "characters": "Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz"
-    },
-    {
-      "id": "dc-arrow",
-      "superhero": "Green Arrow",
-      "publisher": "DC Comics",
-      "alter_ego": "Oliver Queen",
-      "first_appearance": "More Fun Comics #73",
-      "characters": "Oliver Queen"
-    },
-    {
       "id": "dc-wonder",
       "superhero": "Wonder Woman",
       "publisher": "DC Comics",
@@ -119,14 +86,6 @@
       "alter_ego": "Thor Odinson",
       "first_appearance": "Journey into Myster #83",
       "characters": "Thor Odinson"
-    },
-    {
-      "id": "marvel-hulk",
-      "superhero": "Hulk",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Bruce Banner",
-      "first_appearance": "The Incredible Hulk #1",
-      "characters": "Bruce Banner"
     },
     {
       "id": "marvel-wolverine",
