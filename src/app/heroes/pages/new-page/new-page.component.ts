@@ -4,6 +4,9 @@ import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
 	selector: 'app-new-page',
@@ -25,7 +28,13 @@ export class NewPageComponent implements OnInit {
 		{ id: 'Marvel Comics', desc: 'Marvel - Comics' },
 	];
 
-	constructor(private heroesService: HeroesService, private activatedRouter: ActivatedRoute, private router: Router) {}
+	constructor(
+		private heroesService: HeroesService,
+		private activatedRouter: ActivatedRoute,
+		private router: Router,
+		private snackbar: MatSnackBar,
+		private dialog: MatDialog
+	) {}
 
 	get currentHero(): Hero {
 		const hero = this.heroForm.value as Hero;
@@ -47,12 +56,32 @@ export class NewPageComponent implements OnInit {
 
 		if (this.currentHero.id) {
 			this.heroesService.updateHero(this.currentHero).subscribe((hero) => {
-				// TODO: mostrar snackbar
+				this.showSnackBar(`${hero.superhero} update!`);
 			});
 			return;
 		}
 		this.heroesService.addHero(this.currentHero).subscribe((hero) => {
-			// TODO: mostrar snackbar, y agregar a /heroes/edit hero.id
+			this.router.navigate(['/heroes/edit', hero.id]);
+			this.showSnackBar(`${hero.superhero} created!`);
 		});
+	}
+
+	onDeleteHero() {
+		if (!this.currentHero.id) throw Error('Hero id is required');
+
+		const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+			data: this.heroForm.value,
+		});
+
+		dialogRef.afterClosed().subscribe((result) => {
+			if (!result) return;
+
+			this.heroesService.deleteHeroById(this.currentHero.id);
+			this.router.navigate(['./heroes']);
+		});
+	}
+
+	showSnackBar(message: string): void {
+		this.snackbar.open(message, 'done', { duration: 2500 });
 	}
 }
